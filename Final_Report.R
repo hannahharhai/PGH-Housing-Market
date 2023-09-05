@@ -5,16 +5,11 @@ housing_plot = ggplot(housing_data, aes(x = Date, y = AVG_Housing_Price)) + geom
 print(housing_plot + ggtitle("Date vs. AVG Housing Price"))
 
 
-
-
 # poverty data
 poverty_data = read.csv("/Users/hannahharhai/Projects/INFSCI 0310/Final Report/poverty_data.csv")
 
 poverty_plot = ggplot(poverty_data, aes(x = Date, y = People_in_Poverty)) + geom_point(size=3) + theme(axis.text.x = element_text(size=15)) + theme(axis.text.y = element_text(size=15)) + theme(axis.title.x = element_text(size=15)) + theme(axis.title.y = element_text(size=15))  + theme(plot.title = element_text(size=15)) + ylab("People in Poverty (thousands)")
 print(poverty_plot + ggtitle("Date vs. People in Poverty"))
-
-
-
 
 # poverty vs housing correlation 
 pvh_data = merge(poverty_data, housing_data, by.x = "Date")
@@ -26,15 +21,11 @@ print(pvh_plot + ggtitle("People in Poverty vs. AVG Housing Price"))
 cor(pvh_data$People_in_Poverty, pvh_data$AVG_Housing_Price)
 
 
-
-
 # income data
 income_data = read.csv("/Users/hannahharhai/Projects/INFSCI 0310/Final Report/income_data.csv")
 
 income_plot = ggplot(income_data, aes(x = Date, y = Income)) + geom_point(size=3) + theme(axis.text.x = element_text(size=15)) + theme(axis.text.y = element_text(size=15)) + theme(axis.title.x = element_text(size=15)) + theme(axis.title.y = element_text(size=15))  + theme(plot.title = element_text(size=15))
 print(income_plot + ggtitle("Date vs. Per Capita Income"))
-
-
 
 # income vs housing correlation
 ivh_data = merge(income_data, housing_data, by.x = "Date")
@@ -46,9 +37,18 @@ print(ivh_plot + ggtitle("Per Capita Income vs. AVG Housing Price"))
 cor(ivh_data$Income, ivh_data$AVG_Housing_Price)
 
 
-
 # unemployment data
 unemployment_data = read.csv("/Users/hannahharhai/Projects/INFSCI 0310/Final Report/unemployment_data.csv")
-unemployment_data
+
+unemployment_plot = ggplot(unemployment_data, aes(x = Date, y = Unemployment_Rate)) + geom_point(size=3) + theme(axis.text.x = element_text(size=15)) + theme(axis.text.y = element_text(size=15)) + theme(axis.title.x = element_text(size=15)) + theme(axis.title.y = element_text(size=15))  + theme(plot.title = element_text(size=15)) + ylab("Unemployment Rate")
+print(unemployment_plot + ggtitle("Date vs. Unemployment Rate"))
+
+
+# unemployment vs housing correlation
 uvh_data = merge(unemployment_data, housing_data, by.x = "Date")
 uvh_data
+
+uvh_plot = ggplot(uvh_data, aes(x = Unemployment_Rate, y = AVG_Housing_Price)) + geom_point(size=3) + theme(axis.text.x = element_text(size=15)) + theme(axis.text.y = element_text(size=15)) + theme(axis.title.x = element_text(size=15)) + theme(axis.title.y = element_text(size=15))  + theme(plot.title = element_text(size=15)) + geom_smooth(method='lm') + xlab("Unemployment Rate") + ylab("AVG Housing Price (thousands)")
+print(uvh_plot + ggtitle("Unemployment Rate vs. AVG Housing Price"))
+
+cor(uvh_data$Unemployment_Rate, uvh_data$AVG_Housing_Price)
