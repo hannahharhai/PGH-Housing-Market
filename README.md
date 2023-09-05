@@ -5,5 +5,5 @@ The main tools we used in this project consist of RStudio and its various librar
 
 In the end unemployment and poverty rates did not have much of a relationship with the housing market at all. However, per capita income and average housing prices have continually increased over the past two decades so it’s no surprise that they have a strong correlation. 
 
-For a more detailed analysis with further explanations and graphs, refer to the report attached above in the repo. 
+For a more detailed analysis with further explanations and visuals, refer to the report attached above in the repo. 
 
